@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'language'  => 'zh-CN', //选择语言包
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -28,14 +29,35 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
+
+        'i18n'  => [
+            'translations' => [
+                'common' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '/messages',
+                    'fileMap' => [
+                        'common' => 'common.php',
+                    ],
+                ],
+                'power' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '/messages',
+                    'fileMap' => [
+                        'power' => 'power.php',
+                    ],
+                ],
+            ]
+        ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'suffix'    => '.html',
             'rules' => [
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
