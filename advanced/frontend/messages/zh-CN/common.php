@@ -14,4 +14,5 @@ return [
     'Signup'    => '注册',
     'Login'     => '登录',
     'Logout'    => '退出登录',
+    'Article'   => '文章'
 ];
