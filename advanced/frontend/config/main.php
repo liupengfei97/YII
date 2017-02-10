@@ -53,7 +53,7 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'suffix'    => '.html',
+//            'suffix'    => '.html', //影响gii 的打开
             'rules' => [
             ],
         ],
