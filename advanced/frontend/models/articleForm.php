@@ -18,6 +18,7 @@ class ArticleForm extends Model
     public $content;
     public $label_img;
     public $cat_id;
+    public $tags;
 
     /**
      * @return array
@@ -42,7 +43,8 @@ class ArticleForm extends Model
             'title'     => '标题',
             'content'   => '文章内容',
             'cat_id'    => '分类',
-            'label_img' => '标签图'
+            'label_img' => '标签图',
+            'tags'      => '标签'
 
         ];
     }
