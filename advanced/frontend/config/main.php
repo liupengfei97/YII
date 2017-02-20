@@ -51,8 +51,8 @@ return [
         ],
 
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'enablePrettyUrl' => true,  // 路由的路径化
+            'showScriptName' => false, // 隐藏入口脚本 index.php
 //            'suffix'    => '.html', //影响gii 的打开
             'rules' => [
             ],

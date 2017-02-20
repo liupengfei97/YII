@@ -2,7 +2,11 @@
 namespace frontend\controllers;
 
 use frontend\controllers\base\BaseController;
+use vendor\animal\Cat;
+use vendor\animal\Dog;
+use vendor\animal\Mouse;
 use Yii;
+use yii\base\Event;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -220,4 +224,43 @@ class SiteController extends BaseController
             'model' => $model,
         ]);
     }
+
+    /**
+     * 事件绑定机制
+     */
+    public function actionTest()
+    {
+        $cat    = new Cat();
+        $cat2    = new Cat();
+        $mouse  = new Mouse();
+        $dog    = new Dog();
+
+        Event::on(Cat::className(), 'miao', [$mouse, 'run']);
+        Event::on(Cat::className(), 'miao', [$dog, 'look']);
+
+//        $cat->on('miao', [$mouse, 'run']);
+//        $cat->on('miao', [$dog, 'look']);
+//        $cat->off('miao', [$dog, 'look']);  解除绑定
+
+
+        $cat->shout();
+//        $cat2->shout();
+
+    }
+
+    /**
+     * 测试事件行为机制
+     */
+
+    public function actionTestBehavior()
+    {
+        $dog    = new Dog();
+
+        $dog->look();
+        $dog->behaviorMethod();
+        $dog->trigger('wang');
+
+
+    }
+
 }

@@ -61,4 +61,11 @@ class ArticleModel extends BaseModel
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function test()
+    {
+        self::optimisticLock();
+        self::updateInternal();
+        $this->optimisticLock();
+    }
 }
