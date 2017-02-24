@@ -1,35 +1,56 @@
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
-
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2017/2/24
+ * Time: 16:51
+ */
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\widgets\ActiveForm;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = '后台登录';
+
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <h1 class="logo-name">blog</h1>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
         </div>
+        <h3>后台登录</h3>
+        <?php $form = ActiveForm::begin([
+            'id'        => 'login-form',
+            'method'    => 'post',
+            'options'   => ['class' => 'm-t', 'role' => 'form'],
+        ]); ?>
+
+        <div class="form-group">
+            <?= $form->field($model, 'username', [
+                'inputOptions'  => [
+                    'placeholder' => '用户名',
+                    'autofocus' => true,
+                    'class' => 'form-control'
+                ]
+            ])->textInput()->label(false) ?>
+        </div>
+        <div class="form-group">
+            <?= $form->field($model, 'password', [
+                'inputOptions'  => [
+                    'placeholder' => '密码',
+                    'class' => 'form-control'
+                ]
+            ])->passwordInput(['class' => 'form-control'])->label(false) ?>
+        </div>
+
+        <?= Html::submitButton('登录', ['class' => 'btn btn-primary block full-width m-b', 'name' => 'login-button']) ?>
+
+        <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+        </p>
+        <?php ActiveForm::end()?>
+
     </div>
 </div>
+

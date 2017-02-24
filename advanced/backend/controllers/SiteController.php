@@ -18,7 +18,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
+            /*'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -37,7 +37,7 @@ class SiteController extends Controller
                 'actions' => [
                     'logout' => ['post'],
                 ],
-            ],
+            ],*/
         ];
     }
 
@@ -55,11 +55,15 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $msg = '测试一下';
+
+        return $this->render('index', ['msg'    => $msg ]);
     }
 
     public function actionLogin()
     {
+        $this->layout = 'login.php';
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
