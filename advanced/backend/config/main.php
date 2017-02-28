@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'language'  => 'zh-CN', //选择语言包
     'components' => [
         'user' => [
             'identityClass' => 'common\models\Admin',
@@ -35,6 +36,14 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+
+        /*RBAC权限管理*/
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'itemTable' => 'auth_item',
+            'assignmentTable' => 'auth_assignment',
+            'itemChildTable' => 'auth_item_child',
         ],
 
     ],
