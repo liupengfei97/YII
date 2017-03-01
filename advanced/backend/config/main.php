@@ -27,6 +27,17 @@ return [
                 ],
             ],
         ],
+        'i18n'  => [
+            'translations' => [
+                'common' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '/messages',
+                    'fileMap' => [
+                        'common' => 'common.php',
+                    ],
+                ],
+            ]
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
