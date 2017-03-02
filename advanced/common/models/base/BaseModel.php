@@ -10,8 +10,11 @@ namespace common\models\base;
 
 
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
+use yii\web\Link;
+use yii\web\Linkable;
 
-class BaseModel extends ActiveRecord
+class BaseModel extends ActiveRecord implements Linkable
 {
 
 
@@ -46,5 +49,15 @@ class BaseModel extends ActiveRecord
 
         return $data;
 
+    }
+
+    /**
+     * @return array
+     */
+    public function getLinks()
+    {
+        return [
+            Link::REL_SELF => Url::to(['user/view', 'id' => $this->id], true),
+        ];
     }
 }

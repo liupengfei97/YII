@@ -42,6 +42,12 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user']],
             ],
         ],
+        /*为了API能够识别json格式数据*/
+        'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ]
 
     ],
     'params' => $params,
