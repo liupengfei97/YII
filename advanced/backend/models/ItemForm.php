@@ -9,6 +9,7 @@
 namespace backend\models;
 
 
+use Yii;
 use yii\base\Model;
 
 class ItemForm extends Model
@@ -21,6 +22,8 @@ class ItemForm extends Model
      * @var
      */
     public $type;
+
+
     /**
      * @var
      */
@@ -71,6 +74,25 @@ class ItemForm extends Model
             self:: SCENARIOS_DELETE => [ 'name'],
         ];
         return array_merge( parent:: scenarios(), $scenarios);
+    }
+
+    /**
+     * @return bool
+     */
+    public function addItem()
+    {
+        //实例化AuthManager类
+        $auth = Yii::$app->authManager;
+
+        if($this->type == self::T_ROLE){
+            $item = $auth->createRole($this->name);
+            $item->description = $this->description?:'创建['.$this->name.']角色';
+        }else{
+            $item = $auth->createPermission($this->name);
+            $item->description = $this->description?:'创建['.$this->name.']权限';
+        }
+
+        return $auth->add($item);
     }
 
 

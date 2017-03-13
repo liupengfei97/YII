@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\AuthItem */
 
-$this->title = 'Create Auth Item';
+$this->title = '创建角色';
 $this->params['breadcrumbs'][] = ['label' => 'Auth Items', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

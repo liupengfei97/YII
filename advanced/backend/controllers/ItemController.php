@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\ItemForm;
 use Yii;
 use common\models\AuthItem;
-use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -80,15 +80,20 @@ class ItemController extends Controller
      */
     public function actionCreate()
     {
-        $model = new AuthItem();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->name]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        $model = new ItemForm();
+        //设置场景
+        $model->setScenario(ItemForm:: SCENARIOS_CREATE);
+        //加载数据以及调用创建方法
+        if ($model->load(Yii:: $app-> request->post())) {
+            if($model->validate()){
+                $model->addItem();
+                return $this->redirect([ 'view', 'id' => $model->name]);
+            }
         }
+
+        return $this->render( 'create', [
+            'model' => $model,
+        ]);
     }
 
     /**
